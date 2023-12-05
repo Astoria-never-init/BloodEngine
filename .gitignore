@@ -1,0 +1,14 @@
+/*
+
+!/libs
+!/libs/*
+!/bin
+!/bin/*
+!/res
+!/res/*
+!/src
+!/src/*
+!.git
+!.git/*
+!.gitignore
+!CMakeLists.txt
