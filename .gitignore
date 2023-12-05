@@ -1,5 +1,7 @@
 *
 
+!libs/
+!bin/
 !res/
 !src/
 !.git/

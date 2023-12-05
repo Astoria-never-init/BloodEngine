@@ -50,8 +50,11 @@ namespace sf_input
         void set_mouse_position(float x = 0, float y = 0);
 
     protected:
+        static void set_key_state(bool * _key_states, SF_Key key, bool state);
+        static int  key_to_int(SF_Key button);
         void set_key_state(SF_Key key, bool state);
-        unsigned short get_key_code(SF_Key button);
+
+        
 
         unsigned short key_lenght = static_cast<unsigned short>(SF_Key::end);
         bool *key_states = 0x0;
