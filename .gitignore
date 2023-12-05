@@ -1,9 +1,0 @@
-*
-
-!libs/
-!bin/
-!res/
-!src/
-!.git/
-!.gitignore
-!CMakeLists.txt
