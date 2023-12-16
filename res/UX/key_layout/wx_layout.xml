@@ -1,3 +1,30 @@
 <Root>
     <Layout key="0" bind="0"/>
+	<Layout key="1" bind="65"/>
+	<Layout key="2" bind="66"/>
+	<Layout key="3" bind="67"/>
+	<Layout key="4" bind="68"/>
+	<Layout key="5" bind="69"/>
+	<Layout key="6" bind="70"/>
+	<Layout key="7" bind="71"/>
+	<Layout key="8" bind="72"/>
+	<Layout key="9" bind="73"/>
+	<Layout key="10" bind="74"/>
+	<Layout key="11" bind="75"/>
+	<Layout key="12" bind="76"/>
+	<Layout key="13" bind="77"/>
+	<Layout key="14" bind="78"/>
+	<Layout key="15" bind="79"/>
+	<Layout key="16" bind="80"/>
+	<Layout key="17" bind="81"/>
+	<Layout key="18" bind="82"/>
+	<Layout key="19" bind="83"/>
+	<Layout key="20" bind="84"/>
+	<Layout key="21" bind="85"/>
+	<Layout key="22" bind="86"/>
+	<Layout key="23" bind="87"/>
+	<Layout key="24" bind="88"/>
+	<Layout key="25" bind="89"/>
+	<Layout key="26" bind="90"/>
+	
 </Root>

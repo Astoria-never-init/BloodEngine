@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/libs/vs_analyzer/WxWidgets",
+                "${workspaceFolder}/libs/include/glm",
+                "${workspaceFolder}/libs/include/xml",
+                "${workspaceFolder}/libs/include/glad"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
+

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<resource xmlns="http://www.wxwindows.org/wxxrc" version="2.3.0.1">
+	<object class="wxFrame" name="B_Frame-main">
+		<style>wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL</style>
+		<size>1280,720</size>
+		<title></title>
+		<centered>1</centered>
+		<aui_managed>0</aui_managed>
+		<object class="wxSplitterWindow" name="B_Spliter-tools">
+			<style>wxSP_3D</style>
+			<sashpos>302</sashpos>
+			<gravity>0</gravity>
+			<minsize>0</minsize>
+			<orientation>vertical</orientation>
+			<object class="wxPanel" name="B_Panel-map_tools">
+				<style>wxTAB_TRAVERSAL</style>
+				<object class="wxBoxSizer">
+					<orient>wxHORIZONTAL</orient>
+					<object class="sizeritem">
+						<option>1</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxSplitterWindow" name="B_Spliter-map_tools">
+							<style>wxSP_3D</style>
+							<sashpos>347</sashpos>
+							<gravity>0</gravity>
+							<minsize>0</minsize>
+							<orientation>horizontal</orientation>
+							<object class="wxScrolledWindow" name="B_Scrolled-map_tree">
+								<style>wxHSCROLL|wxVSCROLL</style>
+								<bg>#8e8e8e</bg>
+								<scrollrate>5,5</scrollrate>
+								<object class="wxBoxSizer">
+									<orient>wxVERTICAL</orient>
+								</object>
+							</object>
+							<object class="wxPanel" name="m_panel6">
+								<style>wxTAB_TRAVERSAL</style>
+								<bg>#8e8e8e</bg>
+								<fg>#ffffff</fg>
+							</object>
+						</object>
+					</object>
+				</object>
+			</object>
+			<object class="wxPanel" name="B_Panel-gl_viewport">
+				<style>wxTAB_TRAVERSAL</style>
+				<bg>#f7f7f7</bg>
+				<object class="wxBoxSizer">
+					<orient>wxVERTICAL</orient>
+					<object class="sizeritem">
+						<option>0</option>
+						<flag>wxEXPAND</flag>
+						<border>5</border>
+						<object class="wxToolBar" name="m_toolBar1">
+							<style>wxTB_HORIZONTAL</style>
+							<bitmapsize></bitmapsize>
+							<margins></margins>
+							<packing>1</packing>
+							<separation>5</separation>
+						</object>
+					</object>
+				</object>
+			</object>
+		</object>
+		<object class="wxMenuBar" name="m_menubar1">
+			<label></label>
+		</object>
+		<object class="wxStatusBar" name="m_statusBar1">
+			<style>wxST_SIZEGRIP</style>
+			<fields>1</fields>
+		</object>
+	</object>
+</resource>

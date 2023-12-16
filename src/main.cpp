@@ -1,5 +1,5 @@
 #include <iostream>
-#include "debug_gui/table.h"
+#include "gui/table.h"
 
 #include <tinyxml2.h>
 

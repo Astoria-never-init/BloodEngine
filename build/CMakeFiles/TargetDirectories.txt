@@ -1,0 +1,3 @@
+/home/remor/BloodEngine/BloodEngine/build/CMakeFiles/testbuild.dir
+/home/remor/BloodEngine/BloodEngine/build/CMakeFiles/edit_cache.dir
+/home/remor/BloodEngine/BloodEngine/build/CMakeFiles/rebuild_cache.dir

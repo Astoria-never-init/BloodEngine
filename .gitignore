@@ -3,11 +3,13 @@
 !/libs
 !/libs/*
 !/bin
-!/bin/*
+!/bin/*.dll
 !/res
 !/res/*
 !/src
 !/src/*
+!.vscode
+!.vscode/*
 !.git
 !.git/*
 !.gitignore

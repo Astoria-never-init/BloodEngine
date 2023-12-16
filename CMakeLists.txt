@@ -11,8 +11,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BINARY_DIR})
 #defines
 
 if(WIN32)
-    set(wxWidgets_ROOT_DIR "D:/SF_Blood_engine/BloodEngine/libs/WxWidgets")
-    set(wxWidgets_LIB_DIR "D:/SF_Blood_engine/BloodEngine/libs/WxWidgets/lib/vc14x_x64_dll")
+    set(wxWidgets_ROOT_DIR "${LIBRARY_DIR}/WxWidgets")
+    set(wxWidgets_LIB_DIR "${LIBRARY_DIR}/WxWidgets/lib/vc14x_x64_dll")
 
     set(platform_liblink_list
         tinyxml2.lib
