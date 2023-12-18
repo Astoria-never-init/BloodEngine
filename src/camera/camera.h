@@ -20,10 +20,11 @@ public:
 	virtual void update_resolution(unsigned short _x, unsigned short _y);
 	virtual void add_rotation_vector(glm::vec3 vec);
 	virtual void add_rotation_yaw(float angle_in_degree);
-	virtual void add_rotation_yaw_pitch(float angle_in_degree);
+	virtual void add_rotation_pitch(float angle_in_degree);
 	virtual void add_location_world(glm::vec3 vec);
 	virtual void add_location_relaitive(glm::vec3 vec);
 	virtual glm::mat4 calculate_matrix(float deltasecond);
+	void set_camera_location(glm::vec3 _camera_position);
 
 protected:
 	virtual void upgrade(float deltasecond) {}
@@ -37,13 +38,13 @@ protected:
 class SF_Viewport_camera : public SF_Virtual_camera
 {
 public:
-	SF_Viewport_camera(SF_Input* _input_class, float _fow, float _near_plane, float _far_plane) : SF_Virtual_camera(_fow, _near_plane, _far_plane), input_class(_input_class) {}
-	SF_Viewport_camera(SF_Input* _input_class) : input_class(_input_class) {}
-	SF_Viewport_camera() {}
+	SF_Viewport_camera(SF_Input* _input_class, float _fow, float _near_plane, float _far_plane);
+	SF_Viewport_camera(SF_Input* _input_class);
 
 	void upgrade(float deltasecond);
 private:
 
+	bool first_click = true;
 	SF_Input * input_class = 0x0;
 
 };

@@ -2,13 +2,16 @@
 #include <tinyxml2.h>
 #include <vector>
 
-
+#include <logger.h>
 
 
 
 SF_Wx_keyboard_layout::SF_Wx_keyboard_layout(char* _patch)
 {
-    load_layout_file(_patch);
+    if(load_layout_file(_patch))
+    {
+        SF_Log::message("SF_Wx_keyboard_layout", "ready to work", SF_Message_type::success);
+    }
 }
 
 SF_Wx_keyboard_layout::~SF_Wx_keyboard_layout()
@@ -25,7 +28,7 @@ bool SF_Wx_keyboard_layout::load_layout_file(char *patch)
 
     if(result != tinyxml2::XML_SUCCESS)
     {
-        cout << "\n" << "Load xml failed";
+        SF_Log::message("SF_Wx_keyboard_layout", "Load XML file failed", SF_Message_type::error);
         return false;
     }
 
@@ -33,7 +36,7 @@ bool SF_Wx_keyboard_layout::load_layout_file(char *patch)
 
     if (root == nullptr)
     {
-        cout << "\n" << "Load xml root failed";
+        SF_Log::message("SF_Wx_keyboard_layout", "Load XML root failed", SF_Message_type::error);
         return false;
     }
 
@@ -41,9 +44,12 @@ bool SF_Wx_keyboard_layout::load_layout_file(char *patch)
     while (key_remaper != nullptr)
     {
         int key, bind;
+        
         if((key_remaper->QueryIntAttribute("key", &key) != tinyxml2::XML_SUCCESS) || (key_remaper->QueryIntAttribute("bind", &bind) != tinyxml2::XML_SUCCESS))
         {
-            cout << "\n" << "Load xml attribute failed";
+            SF_Log::message("SF_Wx_keyboard_layout", "Load XML attribute failed", SF_Message_type::error);
+            SF_Log::int_message("SF_Wx_keyboard_layout", "XML line",key_remaper->GetLineNum() , SF_Message_type::error);
+            
             return false;
         }
         temp.push_back(key_description(key, bind));
@@ -55,10 +61,12 @@ bool SF_Wx_keyboard_layout::load_layout_file(char *patch)
     {
         kd = (key_description*)malloc(sizeof(key_description) * kd_len);
         memcpy(kd, temp.data(), sizeof(key_description) * kd_len);
+
+        SF_Log::message("SF_Wx_keyboard_layout", "Load XML file success", SF_Message_type::success);
         return true;
     }
     
-    cout << "\n" << "Copy array failed";
+    SF_Log::message("SF_Wx_keyboard_layout", "Copy array failed", SF_Message_type::error);
     return false;
 }
 
@@ -71,6 +79,8 @@ SF_Key SF_Wx_keyboard_layout::get_key_description(int _key_code)
             return kd[i].key;
         }
     }
+
+    SF_Log::int_message("SF_Wx_keyboard_layout", "undefine key",_key_code, SF_Message_type::warning);
     return SF_Key::null;
 }
 
@@ -91,6 +101,7 @@ void SF_Wx_input_manager::init(wxWindow *_window, SF_Wx_keyboard_layout *_key_la
 {
     if(_window == 0x0)
     {
+        SF_Log::message("SF_Wx_input_manager", "window is null", SF_Message_type::error);
         return;
     }
 
@@ -116,28 +127,36 @@ void SF_Wx_input_manager::init(wxWindow *_window, SF_Wx_keyboard_layout *_key_la
     window->Bind(wxEVT_RIGHT_DOWN, [pointers](wxMouseEvent& event)
     {
         mouse_key_state_change(pointers, SF_Mouse_key::MOUSE_RIGHT, true);
+        event.Skip();
     });
     window->Bind(wxEVT_LEFT_DOWN, [pointers](wxMouseEvent& event)
     {
         mouse_key_state_change(pointers, SF_Mouse_key::MOUSE_LEFT, true);
+        event.Skip();
     });
     window->Bind(wxEVT_MIDDLE_DOWN, [pointers](wxMouseEvent& event)
     {
         mouse_key_state_change(pointers, SF_Mouse_key::MOUSE_MIDDLE, true);
+        event.Skip();
     });
 
     window->Bind(wxEVT_RIGHT_UP, [pointers](wxMouseEvent& event)
     {
         mouse_key_state_change(pointers, SF_Mouse_key::MOUSE_RIGHT, false);
+        event.Skip();
     });
     window->Bind(wxEVT_LEFT_UP, [pointers](wxMouseEvent& event)
     {
         mouse_key_state_change(pointers, SF_Mouse_key::MOUSE_LEFT, false);
+        event.Skip();
     });
     window->Bind(wxEVT_MIDDLE_UP, [pointers](wxMouseEvent& event)
     {
         mouse_key_state_change(pointers, SF_Mouse_key::MOUSE_MIDDLE, false);
+        event.Skip();
     });
+
+    SF_Log::message("SF_Wx_input_manager", "ready to work", SF_Message_type::success);
 }
 
 void SF_Wx_input_manager::key_state_change(void** pointers, wxKeyEvent& event, bool state)

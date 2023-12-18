@@ -37,16 +37,17 @@ private:
 	const char* vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec3 aPos;\n"
 		"uniform mat4 camera;\n"
+		//"mat4 camera = mat4(1.0);\n"
 		"void main()\n"
 		"{\n"
-		"   gl_Position =  camera * vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+		"   gl_Position = camera * vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
 		"}\0";
 	const char* fragmentShaderSource = "#version 330 core\n"
 		"out vec4 FragColor;\n"
 		"uniform vec4 test;\n"
 		"void main()\n"
 		"{\n"
-		"   FragColor = test;//vec4(0.8f, 0.3f, 0.02f, 1.0f);\n"
+		"   FragColor = vec4(0.8f, 0.3f, 0.02f, 1.0f);\n"
 		"}\n\0";
 	GLuint VAO, VBO;
 	GLuint shaderProgram;

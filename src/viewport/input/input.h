@@ -1,6 +1,10 @@
 #ifndef SF_INPUT_H
 #define SF_INPUT_H
 
+#include <X11/X.h>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
 enum class SF_Key
 {
     null = 0,
@@ -64,7 +68,8 @@ protected:
     static int  key_to_int(SF_Key button);
     
 
-    
+    Display* display;
+    Window root_window;
 
     unsigned short key_lenght = static_cast<unsigned short>(SF_Key::end);
     bool *key_states = 0x0;

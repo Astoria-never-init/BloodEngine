@@ -7,6 +7,7 @@
 
 SF_Frame_gl::SF_Frame_gl(wxWindow* parent, const wxGLAttributes& canvasAttrs) : wxGLCanvas(parent, canvasAttrs)
 {
+	
 	wxGLContextAttrs ctxAttrs;
     ctxAttrs.PlatformDefaults().CoreProfile().OGLVersion(3, 3).EndList();
     openGLContext = new wxGLContext(this, nullptr, &ctxAttrs);
@@ -51,7 +52,7 @@ void SF_Frame_gl::OnPaint(wxPaintEvent& event)
 	{
 		SetCurrent(*openGLContext);
 
-		glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "camera"), 1, GL_FALSE, glm::value_ptr(camera->calculate_matrix(deltasecond)));
+		glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "camera"), 1, GL_FALSE, value_ptr(camera->calculate_matrix(deltasecond)));
 		glUniform4f(glGetUniformLocation(shaderProgram, "test"), 0, 1, 0, 0.5);
 		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -80,6 +81,7 @@ void SF_Frame_gl::OnSize(wxSizeEvent& event)
     {
         auto viewPortSize = event.GetSize() * GetContentScaleFactor();
         glViewport(0, 0, viewPortSize.x, viewPortSize.y);
+		camera->update_resolution(viewPortSize.x, viewPortSize.y);
     }
 
     event.Skip();
@@ -103,7 +105,8 @@ bool SF_Frame_gl::initialize_opengl()
 
 	gladLoadGL();
 
-    camera = new SF_Viewport_camera(input_manager, 80, 0.1, 1000);
+    camera = new SF_Viewport_camera(input_manager, 90, 0.1, 1000);
+	//camera->set_camera_location(glm::vec3(0, 0, -3));
 	
 	GLfloat vertices[] =
 	{

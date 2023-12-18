@@ -12,6 +12,8 @@
 class DBGui : public wxApp 
 {
 public:
+    ~DBGui();
+
     virtual bool OnInit() override;
     SF_Frame_gl* viewport_gl {nullptr};
 };
