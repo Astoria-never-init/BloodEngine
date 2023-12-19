@@ -4,8 +4,8 @@
 #include <glad/glad.h>
 #include <wx/glcanvas.h>
 #include <wx/colordlg.h>
-#include "wx_input/wx_input_class.h"
-#include "viewport/frame_gl.h"
+#include <core/input/wx_input.h>
+#include <core/graphics/viewport/wx_gl_viewport.h>
 
 
 

@@ -3,7 +3,7 @@
 !/libs
 !/libs/*
 !/bin
-!/bin/*.dll
+!/bin/*
 !/res
 !/res/*
 !/src
@@ -14,3 +14,4 @@
 !.git/*
 !.gitignore
 !CMakeLists.txt
+/bin/*.dll

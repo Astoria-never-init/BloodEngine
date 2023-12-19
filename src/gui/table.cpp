@@ -1,7 +1,7 @@
 #include "table.h"
 #include <wx/xrc/xmlres.h>
 
-#include <logger.h>
+#include <core/logger/logger.h>
 
 DBGui::~DBGui()
 {
