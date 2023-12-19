@@ -64,7 +64,7 @@ void SF_Frame_gl::OnPaint(wxPaintEvent& event)
 		glClear(GL_COLOR_BUFFER_BIT);
 		
 		shader_program.use_program();
-		glBindVertexArray(VAO);
+		vao.bind();
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		SwapBuffers();
@@ -121,27 +121,17 @@ bool SF_Frame_gl::initialize_opengl()
 		0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,
 		0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f
 	};
+	
 
 	SF_Shader_manager base_shader;
-
 	base_shader.add_shader(vertexShaderSource, GL_VERTEX_SHADER);
 	base_shader.add_shader(fragmentShaderSource, GL_FRAGMENT_SHADER);
-
 	shader_program.create_shader_program(base_shader);
 
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-
-
-
-
+	vbo.init(vertices, sizeof(vertices));
+	vao.init();
+	vao.link_attribute(vbo, 0, 3, GL_FLOAT, 3 * sizeof(float), 0);
+	
 
 	is_opengl_initialized = true;
 	return true;

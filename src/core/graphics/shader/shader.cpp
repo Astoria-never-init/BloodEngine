@@ -3,7 +3,6 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <core/logger/logger.h>
-#include <iostream>
 
 bool compile_errors(unsigned int _target, int _type)
 {

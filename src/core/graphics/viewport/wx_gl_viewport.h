@@ -5,10 +5,11 @@
 #include <glad/glad.h>
 #include <wx/glcanvas.h>
 #include<iostream>
+
 #include <core/input/wx_input.h>
 #include <core/graphics/camera/camera.h>
-
 #include <core/graphics/shader/shader.h>
+#include <core/graphics/buffers/buffers.h>
 
 class SF_Frame_gl : public wxGLCanvas
 {
@@ -51,6 +52,9 @@ private:
 		"   FragColor = vec4(0.8f, 0.3f, 0.02f, 1.0f);\n"
 		"}\n\0";
 	GLuint VAO, VBO;
+
+	SF_Vbo_buffer vbo;
+	SF_Vao_buffer vao;
 	SF_Shader_program shader_program;
 };
 
